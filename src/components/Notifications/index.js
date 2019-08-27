@@ -1,15 +1,20 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { MdNotifications } from 'react-icons/md';
 
-import {Container, Badge, NotificationList, Scroll, Notification} from './styles';
-
+import {
+  Container,
+  Badge,
+  NotificationList,
+  Scroll,
+  Notification,
+} from './styles';
 
 const Notifications = () => {
   const [visible, setVisible] = useState(false);
   const [notifications, setNotifications] = useState([]);
 
   const hasUnread = useMemo(() => {
-    return !!notifications.find(notification => notification.read === false)
+    return !!notifications.find(notification => notification.read === false);
   }, [notifications]);
 
   useEffect(() => {
@@ -18,16 +23,16 @@ const Notifications = () => {
     setNotifications([]);
   }, []);
 
-  const handleToggleVisible = () =>  {
+  const handleToggleVisible = () => {
     setVisible(!visible);
   };
 
-  const handleMarkAsRead = (id) => {
+  const handleMarkAsRead = id => {
     // TODO update notification
 
     setNotifications(
       notifications.map(notification =>
-        notification._id === id ? {...notification, read: true} : notification
+        notification._id === id ? { ...notification, read: true } : notification
       )
     );
   };
@@ -45,7 +50,12 @@ const Notifications = () => {
               <p>{notification.content}</p>
               <time>{notification.timeDistance}</time>
               {!notification.read && (
-                <button type="button" onClick={() => handleMarkAsRead(notification._id)}>Marcar como lida</button>
+                <button
+                  type="button"
+                  onClick={() => handleMarkAsRead(notification._id)}
+                >
+                  Marcar como lida
+                </button>
               )}
             </Notification>
           ))}

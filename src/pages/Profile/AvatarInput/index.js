@@ -17,12 +17,12 @@ const AvatarInput = () => {
       registerField({
         name: 'avatar_id',
         ref: ref.current,
-        path: 'dataset.file'
+        path: 'dataset.file',
       });
     }
   }, [ref, registerField]);
 
-  const handleChange = async (e) => {
+  const handleChange = async e => {
     const data = new FormData();
 
     data.append('file', e.target.files[0]);

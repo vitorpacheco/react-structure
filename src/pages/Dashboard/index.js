@@ -9,7 +9,10 @@ export const Dashboard = () => {
   const [schedule, setSchedule] = useState([]);
   const [date, setDate] = useState(new Date());
 
-  const dateFormatted = useMemo(() => format(date, 'd \'de\' MMMM', { locale: pt }), [date]);
+  const dateFormatted = useMemo(
+    () => format(date, "d 'de' MMMM", { locale: pt }),
+    [date]
+  );
 
   useEffect(() => {
     const loadSchedule = () => {
@@ -26,10 +29,10 @@ export const Dashboard = () => {
     <Container>
       <header>
         <button type="button" onClick={handlePrevDay}>
-          <MdChevronLeft size={36} color="#fff"/>
+          <MdChevronLeft size={36} color="#fff" />
         </button>
         <button type="button" onClick={handleNextDay}>
-          <MdChevronRight size={36} color="#fff"/>
+          <MdChevronRight size={36} color="#fff" />
         </button>
       </header>
 

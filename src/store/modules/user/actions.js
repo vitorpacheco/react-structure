@@ -1,13 +1,13 @@
-export const updateProfileRequest = (data) => ({
+export const updateProfileRequest = data => ({
   type: '@user/UPDATE_PROFILE_REQUEST',
-  payload: { data }
+  payload: { data },
 });
 
-export const updateProfileSuccess = (profile) => ({
+export const updateProfileSuccess = profile => ({
   type: '@user/UPDATE_PROFILE_SUCCESS',
-  payload: { profile }
+  payload: { profile },
 });
 
 export const updateProfileFailure = () => ({
-  type: '@user/UPDATE_PROFILE_REQUEST'
+  type: '@user/UPDATE_PROFILE_REQUEST',
 });

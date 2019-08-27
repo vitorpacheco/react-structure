@@ -3,16 +3,21 @@ import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
-import { updateProfileFailure, updateProfileSuccess } from '~/store/modules/user/actions';
+import {
+  updateProfileFailure,
+  updateProfileSuccess,
+} from '~/store/modules/user/actions';
 
 export function* updateProfile({ payload }) {
   try {
     const { name, email, avatar_id, ...rest } = payload.data;
 
-    const profile = Object.assign(
-      { name, email, avatar_id },
-      rest.oldPassword ? rest : {}
-    );
+    const profile = {
+      name,
+      email,
+      avatar_id,
+      ...(rest.oldPassword ? rest : {}),
+    };
 
     const response = yield call(api.post, 'users', profile);
 

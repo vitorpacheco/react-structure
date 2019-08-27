@@ -24,7 +24,7 @@ export const Badge = styled.button`
         content: '';
         border-radius: 50%;
       }
-  `}
+    `}
 `;
 
 export const NotificationList = styled.div`
