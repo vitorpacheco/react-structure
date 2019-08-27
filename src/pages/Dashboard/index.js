@@ -1,9 +1,24 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { addDays, format, subDays } from 'date-fns';
+import {
+  addDays,
+  format,
+  subDays,
+  setSeconds,
+  setMinutes,
+  setHours,
+  isBefore,
+  isEqual,
+  parseISO,
+} from 'date-fns';
+import { utcToZonedTime } from 'date-fns-tz';
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import pt from 'date-fns/locale/pt';
 
+import api from '~/services/api';
+
 import { Container, Time } from './styles';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+
+const range = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 export const Dashboard = () => {
   const [schedule, setSchedule] = useState([]);
@@ -15,8 +30,27 @@ export const Dashboard = () => {
   );
 
   useEffect(() => {
-    const loadSchedule = () => {
-      // todo load schedule
+    const loadSchedule = async () => {
+      const response = await api.get('schedule', {
+        params: { date },
+      });
+
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+      const data = range.map(hour => {
+        const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0);
+        const compareDate = utcToZonedTime(checkDate, timezone);
+
+        return {
+          time: `${hour}:00h`,
+          past: isBefore(compareDate, new Date()),
+          appointment: response.data.find(a =>
+            isEqual(parseISO(a.date), compareDate)
+          ),
+        };
+      });
+
+      setSchedule(data);
     };
 
     loadSchedule();
@@ -31,6 +65,7 @@ export const Dashboard = () => {
         <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#fff" />
         </button>
+        <strong>{dateFormatted}</strong>
         <button type="button" onClick={handleNextDay}>
           <MdChevronRight size={36} color="#fff" />
         </button>

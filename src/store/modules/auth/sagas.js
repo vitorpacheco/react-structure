@@ -8,16 +8,11 @@ import api from '~/services/api';
 
 export function* signIn({ payload }) {
   try {
-    const { email, pawssword } = payload;
+    const { email, password } = payload;
 
-    const response = yield call(api.post, 'sessions', { email, pawssword });
+    const response = yield call(api.post, 'sessions', { email, password });
 
     const { token, user } = response.data;
-
-    if (!user.provider) {
-      toast.error('Usuário não encontrado.');
-      return;
-    }
 
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
@@ -38,6 +33,7 @@ export function* signUp({ payload }) {
       name,
       email,
       password,
+      confirmPassword: password,
       provider: true,
     });
 
