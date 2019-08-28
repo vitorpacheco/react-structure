@@ -26,7 +26,7 @@ export const SignUp = () => {
 
   return (
     <>
-      <img src={logo} alt="GoBarber" />
+      <img src={logo} alt="Logo" />
 
       <Form schema={schema} onSubmit={handleSubmit}>
         <Input name="name" placeholder="Nome completo" />

@@ -4,7 +4,7 @@ import { persistReducer } from 'redux-persist';
 export default reducers =>
   persistReducer(
     {
-      key: 'gobarber',
+      key: 'react-structure',
       storage,
       whitelist: ['auth', 'user'],
     },
