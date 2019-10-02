@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Checkbox, Form, Icon, Input } from 'antd';
+import { Checkbox, Form, Icon, Input } from 'antd';
 
 import { ButtonLogin, EsqueciSenha, FormLogin } from '~/pages/Home/styles';
 
@@ -24,10 +24,7 @@ export const Home = props => {
         })(
           <Input
             prefix={
-              <Icon
-                type="user"
-                style={{ color: 'rgba(0, 0, 0, .25)' }}
-              />
+              <Icon type="user" style={{ color: 'rgba(0, 0, 0, .25)' }} />
             }
             placeholder="Usuário"
           />
@@ -40,10 +37,7 @@ export const Home = props => {
         })(
           <Input
             prefix={
-              <Icon
-                type="lock"
-                style={{ color: 'rgba(0, 0, 0, .25)' }}
-              />
+              <Icon type="lock" style={{ color: 'rgba(0, 0, 0, .25)' }} />
             }
             type="password"
             placeholder="Senha"
@@ -66,7 +60,10 @@ export const Home = props => {
         >
           Entrar
         </ButtonLogin>
-        Ou <a href="">registrar agora!</a>
+
+        <ButtonLogin htmlType="button" className="login-form-button">
+          Registrar
+        </ButtonLogin>
       </Form.Item>
     </FormLogin>
   );
