@@ -12,7 +12,7 @@ export const Home = (props) => {
   const {getFieldDecorator} = props.form;
 
   return (
-    <Form onSubmit={handleSubmit} className="login-form">
+    <FormLogin onSubmit={handleSubmit} className="login-form">
       <Form.Item>
         {getFieldDecorator('username', {
           rules: [{ required: true, message: 'Preencha o nome de usuário' }]
@@ -37,7 +37,7 @@ export const Home = (props) => {
         )}
       </Form.Item>
 
-    </Form>
+    </FormLogin>
   );
 };
 
