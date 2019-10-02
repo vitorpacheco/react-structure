@@ -1,0 +1,14 @@
+.dockerignore
+.gitignore
+.nvmrc
+.editorconfig
+
+.git/
+.idea/
+.github/
+
+node_modules/
+build/
+
+README.md
+Dockerfile
