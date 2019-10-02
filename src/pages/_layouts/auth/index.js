@@ -1,12 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Layout } from 'antd';
+
+const { Content } = Layout;
 
 const AuthLayout = ({ children }) => {
-  return children;
-};
-
-AuthLayout.propTypes = {
-  children: PropTypes.element.isRequired,
+  return (
+    <Layout>
+      <Content style={{ padding: '0 50px', marginTop: 64 }}>
+        <div style={{ background: '#fff', textAlign: 'center', padding: 24, minHeight: 380 }}>
+          {children}
+        </div>
+      </Content>
+    </Layout>
+  );
 };
 
 export default AuthLayout;

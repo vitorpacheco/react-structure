@@ -1,12 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Layout } from 'antd';
 
 const DefaultLayout = ({ children }) => {
-  return children;
-};
-
-DefaultLayout.propTypes = {
-  children: PropTypes.element.isRequired,
+  return <Layout>{children}</Layout>;
 };
 
 export default DefaultLayout;
