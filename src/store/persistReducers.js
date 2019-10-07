@@ -6,7 +6,7 @@ export default reducers =>
     {
       key: 'react-structure',
       storage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth'],
     },
     reducers
   );
